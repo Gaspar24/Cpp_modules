@@ -34,8 +34,6 @@ int main(int argc, char *argv[])
 				std::cout << (char)std::toupper(str[j++]);
 			}
 			i++;
-			if(i < argc)
-				std::cout << " ";
 		}
 		std::cout << std::endl;
 	}

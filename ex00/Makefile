@@ -1,6 +1,6 @@
 
 NAME = megaphone
-SRC = megaphone.cpp
+SRC = MegaPhone.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 all : $(NAME)

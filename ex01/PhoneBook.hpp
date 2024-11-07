@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msacaliu <msacaliu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/07 11:31:05 by msacaliu          #+#    #+#             */
+/*   Updated: 2024/11/07 11:31:06 by msacaliu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
@@ -19,14 +31,8 @@ private:
 
 public:
 	Contact() {} // default constructor
-	Contact(std::string f_name, std::string l_name, std::string n_name, std::string p_bumber, std::string d_secret );
-//	{
-//		first_name = f_name;
-//		last_name = l_name;
-//		nickname = n_name;
-//		phone_number = p_bumber;
-//		darkest_secret = d_secret;
-//	}
+	Contact(std::string f_name, std::string l_name, std::string n_name, std::string p_number, std::string d_secret );
+	//--------------->Methods<---------------------
 	//  getters
 	std::string  getFirstName(void);
 	std::string  getLastName(void);
@@ -46,19 +52,14 @@ private :
 	Contact contacts[8];
 	int contact_count;
 	int current_index;
-//	PhoneBook() : contact_count(0), current_index(0) {}
 public:
-//	PhoneBook(){}
-//	PhoneBook(int x, int y);
-PhoneBook()
-	{
-		contact_count = 0;
-		current_index = 0;
-	}
+	PhoneBook();
 	void	add_contact();
 	void	search_contact(int index);
 	void	print_contacts();
 };
+
+// ---main----
 bool check_if_number(std::string str);
 
 #endif
