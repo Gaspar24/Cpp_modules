@@ -1,19 +1,19 @@
-
-NAME = megaphone
-SRC = MegaPhone.cpp
+NAME = orthodox
+SRC = main.cpp Fixed.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
+
 all : $(NAME)
 
 $(NAME) :
 	g++ $(FLAGS) $(SRC) -o $(NAME)
+	rm -rf $(OBJ)
+
+clean :
 	rm -f $(OBJ)
 
-clean:
-	rm -f *.o
-
-fclean :clean
+fclean :
 	rm -f $(NAME)
+	rm -f $(OBJ)
 
-re :fclean all
-
+re : fclean all

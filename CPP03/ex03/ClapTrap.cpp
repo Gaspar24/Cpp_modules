@@ -1,0 +1,68 @@
+
+#include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap()
+{
+
+	 std::cout << "Base ClapTrap-->  - constructor called" << std::endl;
+}
+
+ClapTrap::~ClapTrap(){
+	std::cout << "Base ClapTrap -->  destructor is called" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string str): _name(str) {
+	_hitPoints = 10;
+	_energyPoints = 10;
+	_attackDamage = 0;
+	std::cout << "Base ClapTrap-->   Name set : " << _name << std::endl;
+
+}
+
+ClapTrap::ClapTrap(const ClapTrap &obj): _name(obj._name), _hitPoints(obj._hitPoints), _energyPoints(obj._energyPoints), _attackDamage(obj._attackDamage) {
+	std::cout << "Base --> ClapTrap - Copy constructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &clap) {
+	if (this != &clap) {
+		this->_name = clap._name;
+		this->_hitPoints = clap._hitPoints;
+		this->_energyPoints = clap._energyPoints;
+		this->_attackDamage = clap._attackDamage;
+	}
+	std::cout << "Base ClapTrap -->  assigment opeator created" << std::endl;
+	return *this;
+}
+
+void ClapTrap::attack(const std::string &target)
+{
+	if(_hitPoints < 1 || _energyPoints < 1)
+	{
+		std::cout<<" Base ClapTrap --> - Not enough hit point or energi for an attack" << std::endl;
+		return ;
+	}
+	std::cout << "ClapTrap " << _name <<" attacks " << target << " causing" << _attackDamage << " point of damage" << std::endl;
+	_energyPoints -= 1;
+}
+
+void ClapTrap::takeDamage(unsigned int amount)
+{
+	if(_hitPoints <= 0)
+	{
+		std::cout << _name << " Base --> ClapTrap  is dead!" << std::endl;
+		return ;
+	}
+	_hitPoints  -= amount;
+	std::cout<<"ClapTrap lost:" << amount <<" hit points" << std::endl;
+}
+
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if(_energyPoints < 1)
+	{
+		std::cout << " Base ClapTrap-->   Can't do this action, no energy point left" << std::endl;
+		return ;
+	}
+	_hitPoints += amount;
+	std::cout << "ClapTrap regained : " << amount << " hitPoints" << std::endl;
+}
