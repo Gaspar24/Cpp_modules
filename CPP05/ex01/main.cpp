@@ -35,15 +35,15 @@
 int main(void){
 
 
-	Form form1("first form",false,4,6);
+	AForm form1("first form",false,4,6);
 	std::cout << form1 << std::endl;
 
 	try{
 		Bureaucrat b1("vasile",3); // need to catch the exception for this also .
 		form1.beSigned(b1);
-	} catch(const Form::GradeTooHighException &e){
+	} catch(const AForm::GradeTooHighException &e){
 		std::cerr <<"Exception: " << e.what() << std::endl;
-	}catch(const Form::GradeTooLowException &e){
+	}catch(const AForm::GradeTooLowException &e){
 		std::cerr <<"Exception: " << e.what() << std::endl;
 	}
 
@@ -52,13 +52,13 @@ int main(void){
 
 	std::cout <<"----------------------------\n";
 
-	Form form2("second form",false,3,22);
+	AForm form2("second form",false,3,22);
 	try{
-		Bureaucrat b4("Bureaucrat",25); // need to catch the exception for this also .
+		Bureaucrat b4("Bureaucrat",25);
 		form2.beSigned(b4);
-	} catch(const Form::GradeTooHighException &e){
+	} catch(const AForm::GradeTooHighException &e){
 		std::cerr <<"Exception: " << e.what() << std::endl;
-	}catch(const Form::GradeTooLowException &e){
+	}catch(const AForm::GradeTooLowException &e){
 		std::cerr <<"Exception: " << e.what() << std::endl;
 	}
 	std::cout<<form2 << std::endl;

@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 AForm::AForm():_name(""),_signed(false), _ExecGrade(0), _ReqGrade(150){}
@@ -53,6 +53,10 @@ const char* AForm::GradeTooHighException::what() const throw() {
 
 const char* AForm::GradeTooLowException::what() const throw() {
     return "Grade is too low";
+}
+
+const char*  AForm::NoSignException::what() const throw(){
+    return "Cant sign the form";
 }
 
 

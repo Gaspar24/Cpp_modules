@@ -1,6 +1,6 @@
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 // #include "Bureaucrat.hpp"
 
@@ -30,6 +30,8 @@ class AForm {
 		int getRequiredGrade() const;
 		bool beSigned(const Bureaucrat &obj);
 
+		virtual void	execute(Bureaucrat const &executor) const = 0;
+		
 
 	class GradeTooLowException : public std::exception {
     public:
@@ -37,6 +39,10 @@ class AForm {
     };
 
     class GradeTooHighException : public std::exception {
+    public:
+        virtual const char *what() const throw();
+    };
+	  class NoSignException : public std::exception {
     public:
         virtual const char *what() const throw();
     };
