@@ -3,7 +3,7 @@ NAME = serialization
 
 Flags = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Serialization.cpp
+SRC = main.cpp Serializer.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
