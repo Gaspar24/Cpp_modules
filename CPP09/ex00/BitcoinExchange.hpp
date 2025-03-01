@@ -2,12 +2,20 @@
 #pragma once
 
 #include <iostream>
-#include <map>
+#include <list>
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <utility> 
+#include <climits>
 
-// template<typename T>
+
+enum ErrorCode {
+    NEGATIVE_NUMBER = -4242,
+    BAD_INPUT = -4243,
+    TOO_LARGE = -4244
+};
+
 
 class BitcoinExchange{
 	private:
@@ -22,7 +30,7 @@ class BitcoinExchange{
 		BitcoinExchange &operator = (const BitcoinExchange &obj);
 		~BitcoinExchange();
 
-		std::map<std::string, float> getRates(std::string filename); 
+		std::list<std::pair<std::string,float>> getRates(std::string filename); 
 
 };
 

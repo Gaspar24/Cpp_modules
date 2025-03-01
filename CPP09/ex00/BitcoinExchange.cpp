@@ -29,7 +29,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj){
 BitcoinExchange::~BitcoinExchange(){}
 
 
-std::map<std::string,float>	parseDate(std::map<std::string,float> rates,std::string str){
+std::list<std::pair<std::string,float>>	parseDate(std::list<std::pair<std::string,float>> rates,std::string str){
 
 	int i =0;
 	while(str[i] != ','){
@@ -37,16 +37,17 @@ std::map<std::string,float>	parseDate(std::map<std::string,float> rates,std::str
 	}
 	std::string date = str.substr(0,i);
 	std::string sValue = str.substr(i+1,str.length());
-	rates[date] = atof(sValue.c_str());
+	float value = atof(sValue.c_str());
+	rates.push_back(std::make_pair(date,value));
+
 
 	return rates;
 }
-
 /// dosen t work properly
-std::map<std::string, float> BitcoinExchange::getRates(std::string filename) {
+std::list<std::pair<std::string,float>> BitcoinExchange::getRates(std::string filename) {
     std::ifstream myFile(filename);
     std::string myString;
-    std::map<std::string, float> rates;
+	std::list<std::pair<std::string,float>> rates;
 
     if (myFile.is_open()) {
         while (std::getline(myFile, myString)) {
