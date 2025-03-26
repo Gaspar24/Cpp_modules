@@ -10,20 +10,7 @@
 #include <climits>
 
 
-enum ErrorCode {
-    NEGATIVE_NUMBER = -4242,
-    BAD_INPUT = -4243,
-    TOO_LARGE = -4244
-};
-
-
 class BitcoinExchange{
-	private:
-		int _year;
-		int _month;
-		int _day;
-		float	_value;
-	
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &obj);

@@ -1,27 +1,15 @@
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(){
-	_year = 0;
-	_month = 0;
-	_day = 0;
-	_value = 0;
-}
+BitcoinExchange::BitcoinExchange(){}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj){
-	_year = obj._year;
-	_month = obj._month;
-	_day = obj._day;
-	_value = obj._value;
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj){}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj){
 
 	if(this != &obj){
-		this->_year = obj._year;
-		this->_month = obj._month;
-		this->_day = obj._day;
-		this->_value = obj._value;
+
+		*this = obj;
 	}
 	return *this;
 }
@@ -43,7 +31,7 @@ std::list<std::pair<std::string,float>>	parseDate(std::list<std::pair<std::strin
 
 	return rates;
 }
-/// dosen t work properly
+
 std::list<std::pair<std::string,float>> BitcoinExchange::getRates(std::string filename) {
     std::ifstream myFile(filename);
     std::string myString;
@@ -52,7 +40,6 @@ std::list<std::pair<std::string,float>> BitcoinExchange::getRates(std::string fi
     if (myFile.is_open()) {
         while (std::getline(myFile, myString)) {
 		
-			// std::cout << myString << std::endl;
 			rates = parseDate(rates,myString);
         
         }

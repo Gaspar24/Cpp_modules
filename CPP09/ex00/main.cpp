@@ -1,7 +1,6 @@
 
 #include "BitcoinExchange.hpp"
 
-// should check here if the date in input is bigger than the bigest in the csv
 void calculate(std::string date, float value, std::list<std::pair<std::string, float>>& rates) {
     
     if (date > rates.back().first) {
@@ -32,7 +31,7 @@ int checkValue(float value){
         std::cout << "Error: not a positive number.\n";
         return 1;
     }
-    if (static_cast<long long>(value) > INT_MAX) {
+    if (value > 1000) {
         std::cout << "Error: too large a number.\n";
         return 1;
     }
@@ -44,10 +43,8 @@ int    checkTimeFormat(int year, int month, int day, std::string date){
     if(month > 12 || day > 31){
         std::cout <<"Error: bad input => " << date << std::endl;
         return 1;
-
     }
     std::list<int>monthsWith30 = {4,6,9,11};
-   
     for (std::list<int>::iterator it = monthsWith30.begin(); it != monthsWith30.end(); ++it) {
         if (*it == month && day > 30) {
             std::cout <<"Error: bad input => " << date << std::endl;
@@ -58,7 +55,6 @@ int    checkTimeFormat(int year, int month, int day, std::string date){
         std::cout <<"Error: bad input => " << date << std::endl;
         return 1;
     }
-        
     if(month = 2 && year % 4 != 0 && day > 28){
         std::cout <<"Error: bad input => " << date << std::endl;
         return 1;
